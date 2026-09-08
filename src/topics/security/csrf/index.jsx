@@ -172,7 +172,7 @@ function csrfGuard(req, res, next) {
     const active = blocks.find((b) => b.key === activeKey) || blocks[0];
 
     return (
-        <Styled.Wrapper id="csrf">
+        <Styled.Wrapper>
             <button
                 type="button"
                 className={`sectionHeader ${isOpen ? "open" : ""}`}

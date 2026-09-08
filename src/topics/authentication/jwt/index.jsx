@@ -176,7 +176,7 @@ const Jwt = () => {
     const active = blocks.find((b) => b.key === activeKey);
 
     return (
-        <Styled.Wrapper id="jwt">
+        <Styled.Wrapper>
             <button
                 type="button"
                 className={`sectionHeader ${isOpen ? "open" : ""}`}

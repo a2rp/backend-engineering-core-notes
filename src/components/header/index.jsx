@@ -2,25 +2,19 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { Styled } from "./styled";
 import transparentLogo from "/images/transparentLogo.png";
-import { FiMoon, FiSun, FiCpu, FiShield, FiActivity } from "react-icons/fi";
+import { FiMenu, FiMoon, FiSun } from "react-icons/fi";
 
 const THEME_LS_KEY = "backend-engineering-core-notes-theme";
 
-const Header = () => {
+const Header = ({ onMenuClick }) => {
     const [logoLoaded, setLogoLoaded] = useState(false);
-    const [theme, setTheme] = useState("dark");
-
-    useEffect(() => {
-        const storedTheme = localStorage.getItem(THEME_LS_KEY);
-        const initialTheme = storedTheme || "dark";
-        setTheme(initialTheme);
-
-        if (initialTheme === "light") {
-            document.documentElement.setAttribute("data-theme", "light");
-        } else {
-            document.documentElement.removeAttribute("data-theme");
+    const [theme, setTheme] = useState(() => {
+        if (typeof window === "undefined") {
+            return "dark";
         }
-    }, []);
+
+        return localStorage.getItem(THEME_LS_KEY) || "dark";
+    });
 
     useEffect(() => {
         if (theme === "light") {
@@ -28,7 +22,9 @@ const Header = () => {
         } else {
             document.documentElement.removeAttribute("data-theme");
         }
+    }, [theme]);
 
+    useEffect(() => {
         localStorage.setItem(THEME_LS_KEY, theme);
     }, [theme]);
 
@@ -68,6 +64,15 @@ const Header = () => {
                 </div>
 
                 <div className="rightSide">
+                    <button
+                        type="button"
+                        className="menuButton"
+                        onClick={onMenuClick}
+                        aria-label="Open notes navigation"
+                        title="Open notes navigation"
+                    >
+                        <FiMenu aria-hidden="true" />
+                    </button>
                     <button
                         type="button"
                         className="themeToggleBtn"

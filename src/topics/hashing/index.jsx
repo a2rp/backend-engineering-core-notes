@@ -180,7 +180,7 @@ console.log(ok);`,
     };
 
     return (
-        <Styled.Wrapper id="hashing">
+        <Styled.Wrapper>
             <button
                 type="button"
                 className={`sectionHeader ${isOpen ? "open" : ""}`}

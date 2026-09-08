@@ -220,7 +220,7 @@ Now you can set 1 year caching safely because a new build creates a new filename
     }, [sections, activeKey]);
 
     return (
-        <Styled.Wrapper id="cdn">
+        <Styled.Wrapper>
             <button
                 type="button"
                 className={`sectionHeader ${isOpen ? "open" : ""}`}

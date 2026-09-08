@@ -169,7 +169,7 @@ export default app;`,
     };
 
     return (
-        <Styled.Wrapper id="error-tracking">
+        <Styled.Wrapper>
             <button
                 type="button"
                 className={`sectionHeader ${isOpen ? "open" : ""}`}

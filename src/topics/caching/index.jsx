@@ -18,7 +18,7 @@ import {
 
 const Caching = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const [activeKey, setActiveKey] = useState(null);
+    const [activeKey, setActiveKey] = useState("basics");
 
     const cards = useMemo(
         () => [
@@ -208,7 +208,7 @@ Cache-Control: public, max-age=60`,
     };
 
     return (
-        <Styled.Wrapper id="caching">
+        <Styled.Wrapper>
             <button
                 type="button"
                 className={`sectionHeader ${isOpen ? "open" : ""}`}

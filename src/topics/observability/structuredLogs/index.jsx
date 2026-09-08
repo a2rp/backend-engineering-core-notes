@@ -233,7 +233,7 @@ console.log(JSON.stringify({
     const active = sections.find((s) => s.key === activeKey) || sections[0];
 
     return (
-        <Styled.Wrapper id="structured-logs">
+        <Styled.Wrapper>
             <button
                 type="button"
                 className={`sectionHeader ${isOpen ? "open" : ""}`}

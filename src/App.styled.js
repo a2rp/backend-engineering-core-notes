@@ -1,43 +1,82 @@
-// App.styled.js
 import styled from "styled-components";
 
 export const Styled = {
     Wrapper: styled.div`
-        /* border: 1px solid #f00; */
-        height: 100vh;
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
+        min-height: 100vh;
+        background: var(--color-bg);
     `,
     Header: styled.header`
-        /* border: 1px solid #f00; */
-        height: 60px;
-        flex-shrink: 0;
+        position: fixed;
+        inset: 0 0 auto;
+        height: 64px;
+        z-index: 100;
+    `,
+    Body: styled.div`
+        display: flex;
+        min-height: 100vh;
+        padding-top: 64px;
+
+        @media (max-width: 760px) {
+            display: block;
+        }
     `,
     Main: styled.main`
-        /* border: 1px solid #f00; */
+        min-width: 0;
         flex: 1;
-        overflow-y: auto;
-        position: relative;
+        min-height: calc(100vh - 64px);
+        overflow: hidden;
+    `,
+    Content: styled.div`
+        width: min(100%, 1440px);
+        min-height: calc(100vh - 64px);
+        margin: 0 auto;
+        padding: 30px clamp(18px, 3vw, 46px) 24px;
 
-        .contentWrapper {
-            /* border: 1px solid #f00; */
-            min-height: 100%;
-            max-width: 1440px;
-            margin: auto;
+        .routeLoader {
+            min-height: 360px;
             display: flex;
-            flex-direction: column;
-            padding: 15px;
-
-            .category {
-                margin: 30px 0 15px 0;
-            }
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            color: var(--color-text-secondary);
+            font-size: 14px;
         }
 
-        .footerWrapper {
-            /* border: 1px solid #f00; */
-            /* min-height: 300px; */
-            flex-shrink: 0;
+        /* Topic content stays open. Navigation controls live in the sidebar. */
+        & > section > .sectionHeader { display: none !important; }
+        & > section > .sectionBody {
+            display: block !important;
+            max-height: none !important;
+            opacity: 1 !important;
+            transform: none !important;
+            visibility: visible !important;
+            margin-top: 0 !important;
+        }
+        & > section .cardBody {
+            display: block !important;
+            max-height: none !important;
+            opacity: 1 !important;
+            transform: none !important;
+            visibility: visible !important;
+        }
+        & > section .cardHeader { cursor: default; }
+        & > section .cardHeader .cRight { display: none !important; }
+
+        .spinner {
+            width: 22px;
+            height: 22px;
+            border: 3px solid var(--color-border);
+            border-top-color: var(--color-primary);
+            border-radius: 50%;
+            animation: route-spin 700ms linear infinite;
+        }
+
+        @keyframes route-spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 760px) {
+            padding: 24px 16px 20px;
         }
     `,
 };

@@ -228,7 +228,7 @@ if (req.query.state !== session.oauthState) {
     };
 
     return (
-        <Styled.Wrapper id="oauth">
+        <Styled.Wrapper>
             <button
                 type="button"
                 className={`sectionHeader ${isOpen ? "open" : ""}`}

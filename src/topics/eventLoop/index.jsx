@@ -169,7 +169,7 @@ const id = setInterval(() => {
     };
 
     return (
-        <Styled.Wrapper id="event-loop">
+        <Styled.Wrapper>
             <button
                 type="button"
                 className={`sectionHeader ${isOpen ? "open" : ""}`}
@@ -211,7 +211,6 @@ const id = setInterval(() => {
             </button>
 
             <div
-                id="event-loop-body"
                 className={`sectionBody ${isOpen ? "show" : ""}`}
             >
                 <div className="topNote">

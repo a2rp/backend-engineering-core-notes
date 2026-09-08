@@ -291,7 +291,7 @@ console.log(JSON.stringify({
     };
 
     return (
-        <Styled.Wrapper id="logging-and-monitoring">
+        <Styled.Wrapper>
             <button
                 type="button"
                 className={`sectionHeader ${isOpen ? "open" : ""}`}

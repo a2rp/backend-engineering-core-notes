@@ -1,73 +1,117 @@
-// App.jsx
-import React from "react";
+import React, { lazy, Suspense, useState } from "react";
+import { BrowserRouter, Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { Styled } from "./App.styled";
 import Header from "./components/header";
 import Footer from "./components/footer";
-import About from "./components/about";
-import NodeInternals from "./topics/nodeInternals";
-import EventLoop from "./topics/eventLoop";
-import Streams from "./topics/streams";
-import Buffers from "./topics/buffers";
-import ApiDesign from "./topics/apiDesign";
-import RestPrinciples from "./topics/apiDesign/restPrinciples";
-import Versioning from "./topics/apiDesign/versioning";
-import StatusCodes from "./topics/statusCodes";
-import Authentication from "./topics/authentication";
-import Jwt from "./topics/authentication/jwt";
-import Cookies from "./topics/authentication/cookies";
-import OAuth from "./topics/authentication/oauth";
-import Security from "./topics/security";
-import Xss from "./topics/security/xss";
-import Csrf from "./topics/security/csrf";
-import RateLimiting from "./topics/rateLimiting";
-import Hashing from "./topics/hashing";
-import Caching from "./topics/caching";
-import Redis from "./topics/redis";
-import Cdn from "./topics/cdn";
-import LoggingAndMonitoring from "./topics/loggingAndMonitoring";
-import StructuredLogs from "./topics/observability/structuredLogs";
-import ErrorTracking from "./topics/errorTracking";
+import Sidebar from "./components/sidebar";
+
+const HomePage = lazy(() => import("./pages/HomePage"));
+const NodeInternalsPage = lazy(() => import("./pages/NodeInternalsPage"));
+const ApiDesignPage = lazy(() => import("./pages/ApiDesignPage"));
+const AuthenticationPage = lazy(() => import("./pages/AuthenticationPage"));
+const SecurityPage = lazy(() => import("./pages/SecurityPage"));
+const PerformancePage = lazy(() => import("./pages/PerformancePage"));
+const ObservabilityPage = lazy(() => import("./pages/ObservabilityPage"));
+const EventLoopPage = lazy(() => import("./pages/EventLoopPage"));
+const StreamsPage = lazy(() => import("./pages/StreamsPage"));
+const BuffersPage = lazy(() => import("./pages/BuffersPage"));
+const TimersPage = lazy(() => import("./pages/TimersPage"));
+const MicrotasksPage = lazy(() => import("./pages/MicrotasksPage"));
+const BackpressurePage = lazy(() => import("./pages/BackpressurePage"));
+const ClusterWorkersPage = lazy(() => import("./pages/ClusterWorkersPage"));
+const RestPrinciplesPage = lazy(() => import("./pages/RestPrinciplesPage"));
+const VersioningPage = lazy(() => import("./pages/VersioningPage"));
+const StatusCodesPage = lazy(() => import("./pages/StatusCodesPage"));
+const JwtPage = lazy(() => import("./pages/JwtPage"));
+const CookiesPage = lazy(() => import("./pages/CookiesPage"));
+const OAuthPage = lazy(() => import("./pages/OAuthPage"));
+const XssPage = lazy(() => import("./pages/XssPage"));
+const CsrfPage = lazy(() => import("./pages/CsrfPage"));
+const RateLimitingPage = lazy(() => import("./pages/RateLimitingPage"));
+const HashingPage = lazy(() => import("./pages/HashingPage"));
+const ValidationPage = lazy(() => import("./pages/ValidationPage"));
+const HeadersPage = lazy(() => import("./pages/HeadersPage"));
+const CachingPage = lazy(() => import("./pages/CachingPage"));
+const RedisPage = lazy(() => import("./pages/RedisPage"));
+const CdnPage = lazy(() => import("./pages/CdnPage"));
+const LoggingPage = lazy(() => import("./pages/LoggingPage"));
+const StructuredLogsPage = lazy(() => import("./pages/StructuredLogsPage"));
+const ErrorTrackingPage = lazy(() => import("./pages/ErrorTrackingPage"));
+
+const RouteLoader = () => (
+    <div className="routeLoader" role="status" aria-live="polite">
+        <span className="spinner" />
+        <span>Loading notes...</span>
+    </div>
+);
+
+const RoutedContent = () => {
+    const location = useLocation();
+
+    return (
+        <Suspense key={location.pathname} fallback={<RouteLoader />}>
+            <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/node-internals" element={<NodeInternalsPage />} />
+                <Route path="/node-internals/event-loop" element={<EventLoopPage />} />
+                <Route path="/node-internals/timers" element={<TimersPage />} />
+                <Route path="/node-internals/microtasks" element={<MicrotasksPage />} />
+                <Route path="/node-internals/streams" element={<StreamsPage />} />
+                <Route path="/node-internals/buffers" element={<BuffersPage />} />
+                <Route path="/node-internals/backpressure" element={<BackpressurePage />} />
+                <Route path="/node-internals/cluster-workers" element={<ClusterWorkersPage />} />
+                <Route path="/api-design" element={<ApiDesignPage />} />
+                <Route path="/api-design/rest-principles" element={<RestPrinciplesPage />} />
+                <Route path="/api-design/versioning" element={<VersioningPage />} />
+                <Route path="/api-design/status-codes" element={<StatusCodesPage />} />
+                <Route path="/authentication" element={<AuthenticationPage />} />
+                <Route path="/authentication/jwt" element={<JwtPage />} />
+                <Route path="/authentication/cookies" element={<CookiesPage />} />
+                <Route path="/authentication/oauth" element={<OAuthPage />} />
+                <Route path="/security" element={<SecurityPage />} />
+                <Route path="/security/xss" element={<XssPage />} />
+                <Route path="/security/csrf" element={<CsrfPage />} />
+                <Route path="/security/rate-limiting" element={<RateLimitingPage />} />
+                <Route path="/security/hashing" element={<HashingPage />} />
+                <Route path="/security/validation" element={<ValidationPage />} />
+                <Route path="/security/headers" element={<HeadersPage />} />
+                <Route path="/performance" element={<PerformancePage />} />
+                <Route path="/performance/caching" element={<CachingPage />} />
+                <Route path="/performance/redis" element={<RedisPage />} />
+                <Route path="/performance/cdn" element={<CdnPage />} />
+                <Route path="/observability" element={<ObservabilityPage />} />
+                <Route path="/observability/logging-and-monitoring" element={<LoggingPage />} />
+                <Route path="/observability/structured-logs" element={<StructuredLogsPage />} />
+                <Route path="/observability/error-tracking" element={<ErrorTrackingPage />} />
+                <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
+        </Suspense>
+    );
+};
 
 const App = () => {
+    const [sidebarOpen, setSidebarOpen] = useState(false);
+
     return (
-        <Styled.Wrapper>
-            <Styled.Header>
-                <Header />
-            </Styled.Header>
-            <Styled.Main>
-                <div className="contentWrapper">
-                    <About />
-
-                    <NodeInternals />
-                    <EventLoop />
-                    <Streams />
-                    <Buffers />
-                    <ApiDesign />
-                    <RestPrinciples />
-                    <Versioning />
-                    <StatusCodes />
-                    <Authentication />
-                    <Jwt />
-                    <Cookies />
-                    <OAuth />
-                    <Security />
-                    <Xss />
-                    <Csrf />
-                    <RateLimiting />
-                    <Hashing />
-                    <Caching />
-                    <Redis />
-                    <Cdn />
-                    <LoggingAndMonitoring />
-                    <StructuredLogs />
-                    <ErrorTracking />
-                </div>
-
-                <div className="footerWrapper">
-                    <Footer />
-                </div>
-            </Styled.Main>
-        </Styled.Wrapper>
+        <BrowserRouter basename="/backend-engineering-core-notes">
+            <Styled.Wrapper>
+                <Styled.Header>
+                    <Header onMenuClick={() => setSidebarOpen(true)} />
+                </Styled.Header>
+                <Styled.Body>
+                    <Sidebar
+                        isOpen={sidebarOpen}
+                        onClose={() => setSidebarOpen(false)}
+                    />
+                    <Styled.Main>
+                        <Styled.Content>
+                            <RoutedContent />
+                            <Footer />
+                        </Styled.Content>
+                    </Styled.Main>
+                </Styled.Body>
+            </Styled.Wrapper>
+        </BrowserRouter>
     );
 };
 

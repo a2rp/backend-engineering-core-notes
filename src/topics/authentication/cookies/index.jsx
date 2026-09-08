@@ -199,7 +199,7 @@ fetch("https://api.example.com/me", {
     };
 
     return (
-        <Styled.Wrapper id="cookies">
+        <Styled.Wrapper>
             <button
                 type="button"
                 className={`sectionHeader ${isOpen ? "open" : ""}`}

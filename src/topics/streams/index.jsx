@@ -231,7 +231,7 @@ app.post("/upload", (req, res) => {
     };
 
     return (
-        <Styled.Wrapper id="streams">
+        <Styled.Wrapper>
             <button
                 type="button"
                 className={`sectionHeader ${isOpen ? "open" : ""}`}

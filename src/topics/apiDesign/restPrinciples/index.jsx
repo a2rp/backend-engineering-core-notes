@@ -228,7 +228,7 @@ These are acceptable when they represent processes rather than resources.`,
     };
 
     return (
-        <Styled.Wrapper id="rest-principles">
+        <Styled.Wrapper>
             <button
                 type="button"
                 className={`sectionHeader ${isOpen ? "open" : ""}`}

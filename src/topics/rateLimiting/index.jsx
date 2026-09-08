@@ -228,7 +228,7 @@ X-RateLimit-Reset: 1710000000`,
     };
 
     return (
-        <Styled.Wrapper id="rate-limiting">
+        <Styled.Wrapper>
             <button
                 type="button"
                 className={`sectionHeader ${isOpen ? "open" : ""}`}

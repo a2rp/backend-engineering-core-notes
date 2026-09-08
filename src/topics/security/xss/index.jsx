@@ -15,7 +15,7 @@ import {
 
 const Xss = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const [activeKey, setActiveKey] = useState(null);
+    const [activeKey, setActiveKey] = useState("what");
 
     const blocks = useMemo(
         () => [
@@ -145,7 +145,7 @@ Content-Security-Policy:
     };
 
     return (
-        <Styled.Wrapper id="xss">
+        <Styled.Wrapper>
             <button
                 type="button"
                 className={`sectionHeader ${isOpen ? "open" : ""}`}

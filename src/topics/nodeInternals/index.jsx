@@ -18,7 +18,7 @@ import {
     FiWind,
 } from "react-icons/fi";
 
-const NodeInternals = () => {
+const NodeInternals = ({ focusKey }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [activeKey, setActiveKey] = useState(null);
 
@@ -246,6 +246,10 @@ readableStream.pipe(writableStream);
         [],
     );
 
+    const visibleTopics = focusKey
+        ? topics.filter((topic) => topic.key === focusKey)
+        : topics;
+
     const handleToggleMain = () => {
         setIsOpen((v) => !v);
         if (isOpen) setActiveKey(null);
@@ -256,7 +260,7 @@ readableStream.pipe(writableStream);
     };
 
     return (
-        <Styled.Wrapper id="node-internals">
+        <Styled.Wrapper>
             <button
                 type="button"
                 className={`sectionHeader ${isOpen ? "open" : ""}`}
@@ -313,7 +317,7 @@ readableStream.pipe(writableStream);
                 </div>
 
                 <div className="grid">
-                    {topics.map((t) => {
+                    {visibleTopics.map((t) => {
                         const open = activeKey === t.key;
 
                         return (

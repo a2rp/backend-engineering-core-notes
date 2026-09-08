@@ -1,6 +1,6 @@
 # backend-engineering-core-notes
 
-A single-page, at-a-glance revision project for backend engineering concepts using Node.js patterns.
+A route-based revision project for backend engineering concepts using Node.js patterns.
 
 This repo is designed as a fast reference for core backend topics - clean definitions, practical mental models, real examples, and interview-ready notes.
 
@@ -81,7 +81,35 @@ This repo is designed as a fast reference for core backend topics - clean defini
 - React + Vite
 - styled-components
 - react-icons
+- react-router-dom with BrowserRouter
 - GitHub Pages deployment
+
+## Layout and navigation
+
+The app uses a fixed header, a persistent left navigation menu, and a scrollable content area on the right. Each section is loaded only when its route is opened, with a loading spinner shown through React Suspense while the page chunk is fetched.
+
+Available routes:
+
+- `/` for the overview
+- `/node-internals`
+- `/api-design`
+- `/authentication`
+- `/security`
+- `/performance`
+- `/observability`
+
+Each category also has dedicated child routes. For example:
+
+- `/node-internals/event-loop`
+- `/api-design/rest-principles`
+- `/authentication/jwt`
+- `/security/csrf`
+- `/performance/redis`
+- `/observability/structured-logs`
+
+Child routes render their own lazy-loaded topic page. Navigation is handled entirely from the expandable sidebar, without hash links or DOM reference scrolling.
+
+The Vite base path and BrowserRouter basename are both set to `/backend-engineering-core-notes`, which matches the GitHub Pages project URL.
 
 ---
 
@@ -91,6 +119,8 @@ This repo is designed as a fast reference for core backend topics - clean defini
 npm install
 npm run dev
 ```
+
+Open the project URL shown by Vite. For a GitHub Pages-style local path, use `/backend-engineering-core-notes/`.
 
 ---
 

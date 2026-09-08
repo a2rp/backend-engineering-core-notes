@@ -169,7 +169,7 @@ Accept: application/vnd.backendnotes.v2+json`,
     const active = strategies.find((s) => s.key === activeKey) || strategies[0];
 
     return (
-        <Styled.Wrapper id="versioning">
+        <Styled.Wrapper>
             <button
                 type="button"
                 className={`sectionHeader ${isOpen ? "open" : ""}`}

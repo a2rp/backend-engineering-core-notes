@@ -218,7 +218,7 @@ res.cookie("sid", sessionId, {
     };
 
     return (
-        <Styled.Wrapper id="authentication">
+        <Styled.Wrapper>
             <button
                 type="button"
                 className={`sectionHeader ${isOpen ? "open" : ""}`}

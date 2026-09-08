@@ -229,7 +229,7 @@ hitRate = hits / (hits + misses)
     };
 
     return (
-        <Styled.Wrapper id="redis">
+        <Styled.Wrapper>
             <button
                 type="button"
                 className={`sectionHeader ${isOpen ? "open" : ""}`}

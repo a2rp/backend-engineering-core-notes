@@ -275,7 +275,7 @@ GET /products?brand=logitech&q=mouse&sort=rating&order=desc`,
     };
 
     return (
-        <Styled.Wrapper id="api-design">
+        <Styled.Wrapper>
             <button
                 type="button"
                 className={`sectionHeader ${isOpen ? "open" : ""}`}

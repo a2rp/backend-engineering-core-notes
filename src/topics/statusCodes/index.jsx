@@ -271,7 +271,7 @@ If-None-Match: "etag-value"
     };
 
     return (
-        <Styled.Wrapper id="status-codes">
+        <Styled.Wrapper>
             <button
                 type="button"
                 className={`sectionHeader ${isOpen ? "open" : ""}`}

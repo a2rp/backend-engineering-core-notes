@@ -186,7 +186,7 @@ console.log(b.length); // 3 bytes in utf8`,
     };
 
     return (
-        <Styled.Wrapper id="buffers">
+        <Styled.Wrapper>
             <button
                 type="button"
                 className={`sectionHeader ${isOpen ? "open" : ""}`}

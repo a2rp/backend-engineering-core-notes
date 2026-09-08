@@ -84,7 +84,6 @@ export const Styled = {
 
     Main: styled.div`
         width: 100%;
-        max-width: 1440px;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -314,6 +313,36 @@ export const Styled = {
                     display: none;
                 }
             }
+        }
+
+        .menuButton {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            color: var(--color-text-primary);
+            background: linear-gradient(
+                180deg,
+                var(--color-surface),
+                var(--color-surface-2)
+            );
+            box-shadow: 0 10px 22px var(--color-shadow);
+
+            svg { width: 20px; height: 20px; }
+
+            &:hover { border-color: var(--color-border-light); }
+
+            &:focus-visible {
+                outline: 2px solid var(--color-primary);
+                outline-offset: 3px;
+            }
+        }
+
+        @media (max-width: 760px) {
+            .menuButton { display: inline-flex; }
         }
     `,
 };
