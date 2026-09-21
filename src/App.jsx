@@ -95,21 +95,11 @@ const RoutedContent = () => {
 
 const App = () => {
     const [sidebarOpen, setSidebarOpen] = useState(false);
-    const [headerVisible, setHeaderVisible] = useState(true);
     const [showTopButton, setShowTopButton] = useState(false);
 
     useEffect(() => {
-        let previousScrollY = window.scrollY;
-
         const handleScroll = () => {
-            const currentScrollY = window.scrollY;
-
-            setHeaderVisible(
-                currentScrollY <= 0 || currentScrollY < previousScrollY,
-            );
-            setShowTopButton(currentScrollY > 420);
-
-            previousScrollY = currentScrollY;
+            setShowTopButton(window.scrollY > 420);
         };
 
         window.addEventListener("scroll", handleScroll, { passive: true });
@@ -128,7 +118,7 @@ const App = () => {
     return (
         <BrowserRouter basename="/backend-engineering-core-notes">
             <Styled.Wrapper>
-                <Styled.Header className={headerVisible ? "" : "hidden"}>
+                <Styled.Header>
                     <Header onMenuClick={() => setSidebarOpen(true)} />
                 </Styled.Header>
                 <Styled.Body>

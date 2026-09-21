@@ -10,11 +10,6 @@ export const Styled = {
         inset: 0 0 auto;
         height: 64px;
         z-index: 100;
-        transition: transform 220ms ease;
-
-        &.hidden {
-            transform: translateY(-100%);
-        }
     `,
     Body: styled.div`
         display: flex;
