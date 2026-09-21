@@ -1,40 +1,100 @@
-// components/footer/styled.js
 import styled from "styled-components";
 
 export const Styled = {
     Wrapper: styled.footer`
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 12px;
-        padding: 15px;
+        display: grid;
+        gap: 18px;
+        padding: 22px 0 8px;
         border-top: 1px solid var(--color-border);
-
-        font-size: 12px;
         color: var(--color-text-muted);
+        font-size: 12px;
 
-        .right a {
+        .footerTop {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            min-width: 0;
+        }
+
+        .logo {
+            width: 34px;
+            height: 34px;
+            flex: 0 0 auto;
+            object-fit: contain;
+        }
+
+        .copyright {
+            margin: 0;
+            color: var(--color-text-muted);
+            line-height: 1.5;
+        }
+
+        .copyright a {
             color: var(--color-text-secondary);
-            font-weight: 600;
+            font-weight: 800;
+            text-decoration: none;
+
+            &:hover {
+                box-shadow: 0 18px 40px var(--color-shadow);
+                text-shadow: 0 0 12px var(--color-text-primary);
+            }
         }
 
-        .right a:hover {
-            color: var(--color-text-primary);
+        .supportLinks,
+        .footerLinks {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
         }
 
-        a {
+        .supportLinks {
+            justify-content: flex-end;
+        }
+
+        .iconLink {
+            width: 34px;
+            height: 34px;
+
+            display: grid;
+            place-items: center;
+
+            border: 1px solid var(--color-border);
+            border-radius: 9px;
+            background: var(--color-surface-2);
             color: var(--color-text-secondary);
-            font-weight: 600;
+            text-decoration: none;
+
+            transition:
+                box-shadow 160ms ease,
+                text-shadow 160ms ease;
+
+            &:hover {
+                box-shadow: 0 18px 40px var(--color-shadow);
+                text-shadow: 0 0 12px var(--color-text-primary);
+            }
+
+            svg {
+                width: 14px;
+                height: 14px;
+            }
         }
 
-        a:hover {
-            color: var(--color-text-primary);
-        }
+        @media (max-width: 600px) {
+            .footerTop {
+                align-items: flex-start;
+                flex-direction: column;
+            }
 
-        @media (width < 600px) {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 6px;
+            .supportLinks {
+                justify-content: flex-start;
+            }
         }
     `,
 };

@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useState } from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import { BrowserRouter, Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { Styled } from "./App.styled";
 import Header from "./components/header";
@@ -48,6 +48,10 @@ const RouteLoader = () => (
 const RoutedContent = () => {
     const location = useLocation();
 
+    useEffect(() => {
+        window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    }, [location.pathname]);
+
     return (
         <Suspense key={location.pathname} fallback={<RouteLoader />}>
             <Routes>
@@ -91,11 +95,40 @@ const RoutedContent = () => {
 
 const App = () => {
     const [sidebarOpen, setSidebarOpen] = useState(false);
+    const [headerVisible, setHeaderVisible] = useState(true);
+    const [showTopButton, setShowTopButton] = useState(false);
+
+    useEffect(() => {
+        let previousScrollY = window.scrollY;
+
+        const handleScroll = () => {
+            const currentScrollY = window.scrollY;
+
+            setHeaderVisible(
+                currentScrollY <= 0 || currentScrollY < previousScrollY,
+            );
+            setShowTopButton(currentScrollY > 420);
+
+            previousScrollY = currentScrollY;
+        };
+
+        window.addEventListener("scroll", handleScroll, { passive: true });
+
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
+    useEffect(() => {
+        document.body.style.overflow = sidebarOpen ? "hidden" : "";
+
+        return () => {
+            document.body.style.overflow = "";
+        };
+    }, [sidebarOpen]);
 
     return (
         <BrowserRouter basename="/backend-engineering-core-notes">
             <Styled.Wrapper>
-                <Styled.Header>
+                <Styled.Header className={headerVisible ? "" : "hidden"}>
                     <Header onMenuClick={() => setSidebarOpen(true)} />
                 </Styled.Header>
                 <Styled.Body>
@@ -110,6 +143,19 @@ const App = () => {
                         </Styled.Content>
                     </Styled.Main>
                 </Styled.Body>
+
+                {showTopButton && (
+                    <Styled.GoToTop
+                        type="button"
+                        onClick={() =>
+                            window.scrollTo({ top: 0, behavior: "smooth" })
+                        }
+                        aria-label="Go to top"
+                        title="Go to top"
+                    >
+                        <span aria-hidden="true">&uarr;</span>
+                    </Styled.GoToTop>
+                )}
             </Styled.Wrapper>
         </BrowserRouter>
     );

@@ -89,9 +89,8 @@ export const Styled = {
         }
 
         .submenuToggle:hover {
-            color: var(--color-text-primary);
-            background: var(--color-surface-2);
-            border-color: var(--color-border);
+            box-shadow: 0 18px 40px var(--color-shadow);
+            text-shadow: 0 0 12px var(--color-text-primary);
         }
 
         .submenuToggle svg { width: 15px; height: 15px; transition: transform 160ms ease; }
@@ -119,19 +118,22 @@ export const Styled = {
             font-weight: 600;
         }
 
-        .submenu a:hover,
         .submenu a.active {
             color: var(--color-primary);
             border-left-color: var(--color-primary);
             background: color-mix(in srgb, var(--color-primary) 8%, transparent);
         }
 
+        .submenu a:hover {
+            box-shadow: 0 18px 40px var(--color-shadow);
+            text-shadow: 0 0 12px var(--color-text-primary);
+        }
+
         nav a svg { width: 17px; height: 17px; flex: 0 0 auto; }
 
         nav a:hover {
-            color: var(--color-text-primary);
-            background: var(--color-surface-2);
-            border-color: var(--color-border);
+            box-shadow: 0 18px 40px var(--color-shadow);
+            text-shadow: 0 0 12px var(--color-text-primary);
         }
 
         nav a.active {

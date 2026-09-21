@@ -1,7 +1,6 @@
 // src/components/header/index.jsx
 import React, { useEffect, useMemo, useState } from "react";
 import { Styled } from "./styled";
-import transparentLogo from "/images/transparentLogo.png";
 import { FiMenu, FiMoon, FiSun } from "react-icons/fi";
 
 const THEME_LS_KEY = "backend-engineering-core-notes-theme";
@@ -44,8 +43,8 @@ const Header = ({ onMenuClick }) => {
                         <div className="logoWrapper">
                             {!logoLoaded && <div className="logoSkeleton" />}
                             <img
-                                src={transparentLogo}
-                                alt="backend-engineering-core-notes"
+                                src={`${import.meta.env.BASE_URL}images/transparentLogo.png`}
+                                alt="Backend Engineering Core Notes logo"
                                 onLoad={() => setLogoLoaded(true)}
                                 style={{ opacity: logoLoaded ? 1 : 0 }}
                             />

@@ -142,9 +142,8 @@ export const Styled = {
             }
 
             &:hover {
-                border-color: var(--color-border-light);
-                transform: translateY(-1px);
                 box-shadow: 0 18px 40px var(--color-shadow);
+                text-shadow: 0 0 12px var(--color-text-primary);
             }
 
             &:active {
@@ -254,9 +253,8 @@ export const Styled = {
                 box-shadow 160ms ease;
 
             &:hover {
-                transform: translateY(-2px);
-                border-color: var(--color-border-light);
-                box-shadow: 0 20px 44px var(--color-shadow);
+                box-shadow: 0 18px 40px var(--color-shadow);
+                text-shadow: 0 0 12px var(--color-text-primary);
             }
         }
 
@@ -349,7 +347,8 @@ export const Styled = {
             }
 
             &:hover .cChev {
-                border-color: var(--color-border-light);
+                box-shadow: 0 18px 40px var(--color-shadow);
+                text-shadow: 0 0 12px var(--color-text-primary);
             }
         }
 

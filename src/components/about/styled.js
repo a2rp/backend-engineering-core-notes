@@ -47,7 +47,11 @@ export const Styled = {
             background: color-mix(in srgb, var(--color-primary) 16%, var(--color-surface));
         }
 
-        .primaryAction:hover, .textLink:hover { color: var(--color-primary); }
+        .primaryAction:hover,
+        .textLink:hover {
+            box-shadow: 0 18px 40px var(--color-shadow);
+            text-shadow: 0 0 12px var(--color-text-primary);
+        }
 
         .updatedNote { color: var(--color-text-muted); font-size: 12px; }
 

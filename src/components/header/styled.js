@@ -16,8 +16,7 @@ export const Styled = {
             var(--color-surface)
         );
 
-        position: sticky;
-        top: 0;
+        position: relative;
         z-index: 50;
         height: 64px;
 
@@ -288,7 +287,8 @@ export const Styled = {
             }
 
             &:hover {
-                border-color: var(--color-border-light);
+                box-shadow: 0 18px 40px var(--color-shadow);
+                text-shadow: 0 0 12px var(--color-text-primary);
             }
 
             &:active {
@@ -333,7 +333,10 @@ export const Styled = {
 
             svg { width: 20px; height: 20px; }
 
-            &:hover { border-color: var(--color-border-light); }
+            &:hover {
+                box-shadow: 0 18px 40px var(--color-shadow);
+                text-shadow: 0 0 12px var(--color-text-primary);
+            }
 
             &:focus-visible {
                 outline: 2px solid var(--color-primary);

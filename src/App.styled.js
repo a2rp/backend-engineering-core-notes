@@ -10,6 +10,11 @@ export const Styled = {
         inset: 0 0 auto;
         height: 64px;
         z-index: 100;
+        transition: transform 220ms ease;
+
+        &.hidden {
+            transform: translateY(-100%);
+        }
     `,
     Body: styled.div`
         display: flex;
@@ -77,6 +82,50 @@ export const Styled = {
 
         @media (max-width: 760px) {
             padding: 24px 16px 20px;
+        }
+
+    `,
+    GoToTop: styled.button`
+        position: fixed;
+        right: 24px;
+        bottom: 24px;
+        z-index: 90;
+
+        width: 42px;
+        height: 42px;
+
+        display: grid;
+        place-items: center;
+
+        border: 1px solid var(--color-border-light);
+        border-radius: 50%;
+        background: var(--color-surface-2);
+        color: var(--color-text-primary);
+        box-shadow: 0 10px 26px var(--color-shadow);
+        cursor: pointer;
+
+        transition:
+            box-shadow 160ms ease,
+            text-shadow 160ms ease;
+
+        &:hover {
+            box-shadow: 0 18px 40px var(--color-shadow);
+            text-shadow: 0 0 12px var(--color-text-primary);
+        }
+
+        &:focus-visible {
+            outline: 2px solid var(--color-primary);
+            outline-offset: 3px;
+        }
+
+        span {
+            font-size: 22px;
+            line-height: 1;
+        }
+
+        @media (max-width: 760px) {
+            right: 16px;
+            bottom: 16px;
         }
     `,
 };

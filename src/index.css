@@ -192,10 +192,8 @@ a {
 }
 
 a:hover {
-    color: var(--color-link-hover);
-    text-decoration: underline;
-    text-underline-offset: 3px;
-    text-decoration-color: var(--color-border-light);
+    text-shadow: 0 0 12px var(--color-text-primary);
+    box-shadow: 0 8px 22px var(--color-shadow);
 }
 
 /* 7) Lists */
@@ -278,8 +276,8 @@ html[data-theme="light"] select option {
 input:hover,
 textarea:hover,
 select:hover {
-    border-color: var(--color-border-light);
-    background: color-mix(in srgb, var(--color-surface-2) 94%, transparent);
+    box-shadow: 0 8px 22px var(--color-shadow);
+    text-shadow: 0 0 10px var(--color-text-primary);
 }
 
 /* Focus for keyboard navigation */
@@ -367,10 +365,6 @@ hr {
     background: var(--color-border-light);
     border-radius: 999px;
     border: 2px solid var(--color-surface-2);
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: var(--color-border);
 }
 
 /* Firefox */
