@@ -2,7 +2,7 @@
 
 A focused React study guide for revising practical backend engineering concepts with clear explanations, JavaScript examples, and route-based topic navigation.
 
-![Backend Engineering Core Notes screenshot](screenshot.png)
+![Backend Engineering Core Notes screenshot](./screenshot.jpg)
 
 ## Features
 
